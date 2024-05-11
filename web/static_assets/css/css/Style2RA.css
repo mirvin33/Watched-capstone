@@ -1,0 +1,94 @@
+:root {
+    /* css variables: https://developer.mozilla.org/en-US/docs/Web/CSS/var */
+    --primary-color: #5D5E5E;
+    --secondary-color: #0b0b0b;
+    --tertiary-color: #f87272;
+    --error-color: #EE3A23;
+}
+
+.background {
+    background-color: #090909;
+    margin: 0;
+    counter-reset: section;
+    font-family: "Helvetica Neue",Helvetica,sans-serif;
+}
+
+.header {
+    /* Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 4px 20px;
+}
+
+.frame{
+    border: #5D5E5E;
+    border-width: 5px;
+    border-style: solid;
+    justify-content: center;
+}
+
+.left{
+background-color:blue;
+width:500;
+}
+
+.right{
+display:flex;
+justify-content:flex-end;
+background-color:blue;
+flex:auto;
+}
+
+.welcome{
+display:flex;
+justify-content:center;
+height:300px;
+align-items:center;
+}
+
+.text{
+align-items: center;
+float: right;
+font-weight: bold;
+font-size: xx-large;
+color: #EE3A23;
+}
+
+.button {
+  
+  background-color: var(--tertiary-color);
+  border: solid;
+  border-width: 1.5px;
+  border-color: aqua;
+  color: var(--secondary-color);
+  padding: 6px 100px 6px 100px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  align-items: center;
+  
+}
+
+.button-group {
+    display: grid;
+    justify-content:space-between;
+    align-items: center;
+    padding-left: 550px;
+
+
+    
+}
+
+.myslides{
+    display: contents;
+}
+
+.home-LogIn {
+    display: flex;
+    justify-content:space-between;
+
+}
