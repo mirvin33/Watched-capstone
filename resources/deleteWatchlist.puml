@@ -1,0 +1,23 @@
+@startuml
+
+actor User
+participant WebClient
+participant DeleteWatchlistAPI
+participant DynamoDB
+
+User -> WebClient: Initiates delete request with watchlist ID
+WebClient -> DeleteWatchlistAPI: DELETE /watchlist/:id
+DeleteWatchlistAPI -> DynamoDB: Query for watchlist with given ID
+DynamoDB -> DeleteWatchlistAPI: Return watchlist data or null if not found
+alt Watchlist Not Found
+    DeleteWatchlistAPI -> WebClient: Throw WatchlistNotFoundException
+    WebClient -> User: Show error message "Watchlist not found"
+
+else Watchlist Found
+    DeleteWatchlistAPI -> DynamoDB: Delete watchlist with given ID
+    DynamoDB -> DeleteWatchlistAPI: Confirm deletion
+    DeleteWatchlistAPI -> WebClient: Return success message
+    WebClient -> User: Show success message "Watchlist deleted successfully"
+
+end
+@enduml

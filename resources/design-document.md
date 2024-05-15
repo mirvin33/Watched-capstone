@@ -48,7 +48,18 @@ service they are available on.
 
 String id;
 String title;
-Integer streamServ;
+String streamService;
+Boolean watched;
+
+```
+```
+// ContentModel
+
+String contentId;
+String watchListId;
+String title;
+String userId;
+String steamService;
 Boolean watched;
 
 ```
@@ -60,10 +71,12 @@ Boolean watched;
     * If the given watchlist ID is not found, will throw a
         'WatchlistNotFoundException'
 
-### 6.3. Create Watchlist Endpoint
+![getWatchlist.png](images/getWatchlist.png) 
+
+### 6.3 Create Watchlist Endpoint
 
 * Accepts `POST` requests to `/watchlist`
-* Accepts data to create a new watchlist with a provided name, a given customer
+* Accepts data to create a new watchlist with a provided name, a given user
   ID, and an optional list of tags. Returns the new watchlist, including a unique
   watchlist ID assigned by the Watchlist Service.
 * For security concerns, we will validate the provided watchlist name does not
@@ -71,23 +84,88 @@ Boolean watched;
     * If the watchlist name contains any of the invalid characters, will throw an
       `InvalidAttributeValueException`.
 
-### 6.4. Update Watchlist Endpoint
+![createWatchlist.png](images/createWatchlist.png)
 
-* Accepts `PUT` requests to `/watchlist/:id`
-* Accepts data to update a watchlist including a watchlist ID, an updated watchlist
-  name, and the customer ID associated with the watchlist. Returns the updated
-  watchlist.
+### 6.4 Update Watchlist Endpoint
+
+* Accepts `PUT` requests to `/watchlist/:userId/update/:contentId`
+* Accepts data to update the status of a content item on the watchlist for the user with the specified user ID.
     * If the watchlist ID is not found, will throw a `WatchlistNotFoundException`
 * For security concerns, we will validate the provided watchlist name does not
   contain invalid characters: `" ' \`
     * If the watchlist name contains invalid characters, it will throw an
       `InvalidAttributeValueException`.
+
+![updateWatchlist.png](images/updateWatchlist.png)
   
 ### 6.5 Add Content to Watchlist Endpoint:
 
 * Accepts `POST` `/watchlist/:id/add`
 * Accepts and adds a new content item to the watchlist for the user with the specified user ID.
 * Accepts a watchlist ID and a content item to be added. 
-* By default, will insert the new song to the end of the playlist
- - If the optional `queueNext` parameter is provided and is `true`, this API will insert the new song to the front of the 
-playlist so that it will be the next song played
+* By default, will insert the new content to the end of the playlist.
+ - If the optional `queueNext` parameter is provided and is `true`, this API will insert the new show or movie to the 
+front of the watchlist so that it will be the first title on the list.
+
+![addContent.png](images/addContent.png)
+
+## 6.6 Delete Watchlist Endpoint
+Accepts `DELETE` `/watchlist/:id/add`
+User is able to delete a watchlist.
+The webClient sends a DELETE request with watchlist id to DeleteWatchlist API endpoint.
+If id does not exist, will throw `WatchlistNotFoundException`.
+The API deletes info from dynamodb.
+Client will show a successful delete message.
+
+![deleteWatchlist.png](images/deleteWatchlist.png) 
+
+### 6.7 Get Watchlist Content Endpoint
+
+* Accepts `GET` requests to `/watchlist/:id/content`
+* Retrieves all content of a watchlist with the given watchlist ID
+    * Returns the content list in default watchlist order.
+   
+* If the watchlist ID is found, but contains no content, the watchlist will be
+  empty.
+* If the watchlist ID is not found, will throw a `WatchlistNotFoundException`
+
+![getWatchlistContent.png](images/getWatchlistContent.png)
+
+### 6.8 Get Watchlist for User Endpoint
+
+* Accepts `GET` requests to `/watchlists/:userId`
+* Accepts a user ID and returns a list of WatchlistModels created by the user.
+    * If the given customer has not created any watchlist, an empty list will be returned.
+
+![getWatchlistForUser.png](images/getWatchlistForUser.png)
+
+## 7. Tables
+
+### 7.1. `watchlist`
+
+```
+id // partition key, string
+title // string
+userId // string, userId-watchlistId-index partition key
+
+```
+### 7.2. `content`
+
+```
+contentId // primary key, string
+watchListId // partition key, string
+title // string
+userId // string, userId-watchlistId-index partition key
+streamServie // string
+watched // boolean
+```
+
+- `usereId-watchlistId-index` includes ALL attributes 
+
+
+## 8. Pages
+
+
+
+...
+

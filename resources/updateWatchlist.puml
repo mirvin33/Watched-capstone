@@ -1,0 +1,14 @@
+@startuml
+actor User
+participant Watched
+participant UpdateWatchlistActivity
+database WatchlistDatabase
+
+User -> Watched: Submits status update
+Watched -> UpdateWatchlistActivity: PUT /watchlist/:userId/update/:contentId
+UpdateWatchlistActivity -> WatchlistDatabase: Update content status
+WatchlistDatabase --> UpdateWatchlistActivity: Confirmation of update
+UpdateWatchlistActivity --> Watched: Returns confirmation message
+Watched --> User: Displays confirmation message
+
+@enduml
