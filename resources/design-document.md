@@ -8,12 +8,13 @@ their own watchlist functionalities, users lack a centralized solution to organi
 preferences effectively.
 
 ## 2. Top Questions to Resolve in Review
-- What is the optimal user interface design to ensure intuitive navigation and ease of use for managing watchlists?
+- What is the optimal user interface design to ensure intuitive navigation and ease of use for managing watchlist?
+- How should we handle privacy and security concerns, especially regarding user data and authentication?
 
 
 ## 3. Use Cases
 -  As a user, I want to create a new watchlist with a given name.
--  As a user, I want to retrieve my playlist with a given ID
+-  As a user, I want to retrieve my watchlist with a given ID.
 -  As a user, I want to add TV shows and movies to my watchlist by specifying their titles and the streaming 
 service they are available on.
 -  As a user, I want to mark content as 'Watched' once I have viewed it to track my viewing progress.
@@ -34,10 +35,14 @@ service they are available on.
 ### 4.2 Out of Scope
 
 - Integration with streaming platforms' APIs for real-time availability.
-- Social features like sharing watchlists or personalized recommendations based on viewing history.
+- Social features like sharing watchlist or personalized recommendations based on viewing history.
 - Ability to play content from the website.
 
 ## 5. Proposed Architecture Overview 
+
+A serverless architecture using AWS services such as API Gateway, Lambda, DynamoDB, and Cognito for authentication. 
+This architecture ensures scalability, cost-effectiveness, and easy maintenance. Data flow will be managed through 
+RESTful APIs, facilitating communication between frontend clients and backend services.
 
 ## 6. API 
 
@@ -48,8 +53,7 @@ service they are available on.
 
 String id;
 String title;
-String streamService;
-Boolean watched;
+String userId;
 
 ```
 ```
@@ -109,7 +113,7 @@ front of the watchlist so that it will be the first title on the list.
 
 ![addContent.png](images/addContent.png)
 
-## 6.6 Delete Watchlist Endpoint
+### 6.6 Delete Watchlist Endpoint
 Accepts `DELETE` `/watchlist/:id/add`
 User is able to delete a watchlist.
 The webClient sends a DELETE request with watchlist id to DeleteWatchlist API endpoint.
@@ -131,10 +135,10 @@ Client will show a successful delete message.
 
 ![getWatchlistContent.png](images/getWatchlistContent.png)
 
-### 6.8 Get Watchlist for User Endpoint
+### 6.8 Get Watchlists for User Endpoint
 
 * Accepts `GET` requests to `/watchlists/:userId`
-* Accepts a user ID and returns a list of WatchlistModels created by the user.
+* Accepts a user ID and returns a list of  all WatchlistModels created by the user.
     * If the given customer has not created any watchlist, an empty list will be returned.
 
 ![getWatchlistForUser.png](images/getWatchlistForUser.png)
