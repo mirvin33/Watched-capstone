@@ -116,7 +116,7 @@ front of the watchlist so that it will be the first title on the list.
 ![addContent.png](images/addContent.png)
 
 ### 6.6 Delete Watchlist Endpoint
-Accepts `DELETE` `/watchlist/:id/add`
+Accepts `DELETE` `/watchlist/:id/delete`
 User is able to delete a watchlist.
 The webClient sends a DELETE request with watchlist id to DeleteWatchlist API endpoint.
 If id does not exist, will throw `WatchlistNotFoundException`.
