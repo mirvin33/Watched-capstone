@@ -28,8 +28,10 @@ service they are available on.
 
 ### 4.1 In Scope
 
-- Developing a centralized watchlist service allowing users to add, organize, and update their content preferences.
+- Developing a centralized watchlist service allowing users to add, organize, and update their content.
 - Implementing features to mark content as 'Watched' and track viewing progress.
+
+Extension (If time allows)
 - Providing search and discovery functionalities to help users find specific titles on their watchlist.
 
 ### 4.2 Out of Scope
@@ -169,7 +171,8 @@ watched // boolean
 
 ## 8. Pages
 
-https://www.canva.com/design/DAGFRlda8uA/XhsCkvVT9aMLxSqpcmYZNw/view?utm_content=DAGFRlda8uA&utm_campaign=designshare&utm_medium=link&utm_source=editor
+Design Mockups
 
+https://www.canva.com/design/DAGFRlda8uA/XhsCkvVT9aMLxSqpcmYZNw/view?utm_content=DAGFRlda8uA&utm_campaign=designshare&utm_medium=link&utm_source=editor
 ...
 
