@@ -62,7 +62,7 @@ String userId;
 // ContentModel
 
 String contentId;
-String watchListId;
+String watchlistId;
 String title;
 String userId;
 String steamService;
@@ -75,7 +75,7 @@ Boolean watched;
 * Accepts `GET` request to `/watchlist/:id`
 * Accepts a watchlist ID and returns the corresponding WatchlistModel.
     * If the given watchlist ID is not found, will throw a
-        'WatchlistNotFoundException'
+      `WatchlistNotFoundException`
 
 ![getWatchlist.png](images/getWatchlist.png) 
 
@@ -109,7 +109,7 @@ Boolean watched;
 * Accepts `POST` `/watchlist/:id/add`
 * Accepts and adds a new content item to the watchlist for the user with the specified user ID.
 * Accepts a watchlist ID and a content item to be added. 
-* By default, will insert the new content to the end of the playlist.
+* By default, will insert the new content to the end of the watchlist.
  - If the optional `queueNext` parameter is provided and is `true`, this API will insert the new show or movie to the 
 front of the watchlist so that it will be the first title on the list.
 
@@ -159,7 +159,7 @@ userId // string, userId-watchlistId-index partition key
 
 ```
 contentId // primary key, string
-watchListId // partition key, string
+watchlistId // partition key, string
 title // string
 userId // string, userId-watchlistId-index partition key
 streamServie // string
