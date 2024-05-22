@@ -1,0 +1,14 @@
+@startuml
+actor User
+participant Watched
+participant AddContentActivity
+database WatchlistDatabase
+
+User -> Watched: Submits content to add (/watchlist/:id/add)
+Watched -> AddContentActivity: POST /watchlist/:id/add
+AddContentActivity -> WatchlistDatabase: Add content item to watchlist
+WatchlistDatabase --> AddContentActivity: Confirmation of addition
+AddContentActivity --> Watched: Returns confirmation message
+Watched --> User: Displays confirmation message
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+actor User
+participant Watched
+participant GetWatchlistActivity
+database WatchlistDatabase
+
+User -> Watched: Requests watchlist (/watchlist/:id)
+Watched -> GetWatchlistActivity: GET /watchlist/:id
+GetWatchlistActivity -> WatchlistDatabase: Query watchlist by id
+WatchlistDatabase --> GetWatchlistActivity: Returns watchlist items
+GetWatchlistActivity --> Watched: Returns watchlist data
+Watched --> User: Displays watchlist
+
+@enduml

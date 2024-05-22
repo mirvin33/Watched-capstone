@@ -11,12 +11,10 @@ Despite the convenience of digital streaming, users face several challenges in m
 want to watch:
 1.	Fragmented Information: Users need to switch between different platforms to manage individual watchlist, leading 
 to fragmented information and lack of centralized control.
-2.	Difficulty in Discovering Content: Finding where a specific TV show is available to stream can be time-consuming, 
-especially when it changes platforms or is removed from a service.
-3.	Centralized Watchlist Management:  Users cannot easily create a comprehensive watchlist encompassing multiple 
+2. Centralized Watchlist Management:  Users cannot easily create a comprehensive watchlist encompassing multiple 
 streaming platforms, which leads to confusion about what they have or have not watched.
-4.	Inability to track Progress: Users find it challenging to track their progress in watching TV shows and movies, 
-causing them to forget where they left off, or which shows they have completed.
+3. Inability to track Progress: Users find it challenging to track their progress in watching TV shows and movies, 
+causing them to forget which shows they have completed.
 
 ## Objective
 The objective of the Watched website is to create a user-friendly platform where users can manage and track their TV 

@@ -1,0 +1,14 @@
+@startuml
+actor User
+participant Watched
+participant CreateWatchlistActivity
+database WatchlistDatabase
+
+User -> Watched: Submits new watchlist (/watchlist)
+Watched -> CreateWatchlistActivity: POST /watchlist
+CreateWatchlistActivity -> WatchlistDatabase: Save new watchlist
+WatchlistDatabase --> CreateWatchlistActivity: Confirmation of addition
+CreateWatchlistActivity --> Watched: Returns new watchlist data
+Watched --> User: Displays new watchlist
+
+@enduml
